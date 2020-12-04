@@ -10,26 +10,18 @@ object Day01 extends Problem[Seq[Int], Int] {
   val size = 2
 
   override def parse(res: String): Seq[Int] =
-    Files.read(res).flatMap(row => Try(row.toInt).toOption)
+    Files
+      .read(res)
+      .flatMap(row => Try(row.toInt).toOption)
+      .toList.sortWith(_ > _)
 
-  override def eval(raw: Seq[Int]): Int = {
-    sums(raw.sortWith(_ > _).toList) match {
-      case Some(result) => result
-      case None => 0
-    }
+  override def eval(list: Seq[Int]): Int = {
+    list
+      .flatMap {
+        a => list.filter {
+          b => a + b == 2020
+        }
+      }.product
   }
-
-  def subLists(list: List[Int]): List[List[Int]] = {
-    list match {
-      case Nil => List.empty
-      case head :: tail => List(List(head, tail.lastOption.getOrElse(0))) ++ subLists(tail)
-    }
-  }
-
-  def sums(list: List[Int]): Option[Int] =
-    subLists(list)
-      .collectFirst {
-        case x if x.sum == target => x.product
-      }
 
 }
