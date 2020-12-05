@@ -32,10 +32,11 @@ object Runner extends App {
   }
 
   def solve(problem: Problem[_, _], year: Int, day: Int): Unit = {
-    print(s"Solving puzzle for Day $day (Year $year)")
+    println(s"Solving puzzle for Day $day (Year $year)")
     val res = resource(year, day)
-    val result = problem.solve(res)
-    println(s" - result: $result")
+    val (res1, res2) = problem.solve(res)
+    println(s" - result stage 1: $res1")
+    println(s" - result stage 2: $res2")
   }
 
 }
