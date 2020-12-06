@@ -9,6 +9,6 @@ object Files {
    * @param resource Path to the resource
    * @return Sequence of Strings
    */
-  def read(resource: String): Seq[String] =
-    Source.fromInputStream(getClass.getClassLoader.getResourceAsStream(resource)).getLines().toSeq
+  def read(resource: String): List[String] =
+    Source.fromInputStream(getClass.getClassLoader.getResourceAsStream(resource)).getLines().toList
 }

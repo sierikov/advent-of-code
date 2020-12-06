@@ -7,7 +7,8 @@ object Runner extends App {
   val problemsM: Map[Int, Map[Int, Problem[_, _]]] =
     Map(
       2020 -> Map(
-        1 -> y2020.Day01
+        1 -> y2020.Day01,
+        2 -> y2020.Day02
       )
     )
 
