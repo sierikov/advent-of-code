@@ -13,16 +13,14 @@ object Day01 extends Problem[List[Int], Int] {
     Files
       .read(res)
       .flatMap(row => Try(row.toInt).toOption)
-      .toList.sortWith(_ > _)
+      .sortWith(_ > _)
 
   override def first(input: List[Int]): Int =
-    input
-      .flatMap {
-        a =>
-          input.filter {
-            b => a + b == 2020
-          }
-      }.product
+    input.flatMap { a =>
+      input.filter {
+        b => a + b == 2020
+      }
+    }.product
 
   override def second(input: List[Int]): Int = {
     (for {
