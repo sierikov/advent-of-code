@@ -4,6 +4,6 @@ lazy val root = (project in file("."))
   .settings(version := "0.1")
   .settings(scalaVersion := "2.13.3")
 
-lazy val dependencies = Seq("org.scalatest" %% "scalatest"   % "3.2.0"  % "test")
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.3"
 
 scalacOptions ++= Seq("-deprecation", "-feature")
