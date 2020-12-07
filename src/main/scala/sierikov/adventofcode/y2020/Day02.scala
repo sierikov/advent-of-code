@@ -7,33 +7,36 @@ import scala.util.matching.Regex
 
 object Day02 extends Problem[List[String], Int] {
   case class Rule(min: Int, max: Int, ch: Char)
+  type Password = String
 
-  val extractRule: Regex ="""(\d+)-(\d+) ([a-z])""".r
+  val extract: Regex ="""(\d+)-(\d+) ([a-z]): (\w+)""".r
 
   override def parse(res: String): List[String] =
     Files.read(res)
 
-  def toRule(x: String): Rule =
-    x match {
-      case extractRule(min, max, ch) => Rule(min.toInt, max.toInt, ch.charAt(0))
+  def convert(line: String): (Rule, Password) =
+    line match {
+      case extract(max, min, ch, password) =>
+        (Rule(max.toInt, min.toInt, ch.charAt(0)), password)
     }
 
-  def divide(x: String): (Rule, String) =
-    x.split(": ") match {
-      case Array(x, y) => (toRule(x), y)
-    }
-
-  def check(rule: Rule, password: String): Boolean = {
+  def check(rule: Rule, password: Password): Boolean = {
     val amount = password.count(x => rule.ch == x)
     amount >= rule.min && amount <= rule.max
   }
 
-  def check2(rule: Rule, password: String): Boolean =
+  def check2(rule: Rule, password: Password): Boolean =
     password(rule.min - 1) == rule.ch ^ password(rule.max - 1) == rule.ch
 
   override def first(input: List[String]): Int =
-    input.count(x => check(divide(x)._1, divide(x)._2))
+    input.count(x => {
+      val (rule, pass) = convert(x)
+      check(rule, pass)
+    })
 
   override def second(input: List[String]): Int =
-    input.count(x => check2(divide(x)._1, divide(x)._2))
+    input.count(x => {
+      val (rule, pass) = convert(x)
+      check2(rule, pass)
+    })
 }
