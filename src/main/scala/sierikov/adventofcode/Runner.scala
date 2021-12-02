@@ -13,6 +13,7 @@ object Runner extends App {
       ),
       2021 -> Map(
         1 -> y2021.Day01,
+        2 -> y2021.Day02
       )
     )
 
