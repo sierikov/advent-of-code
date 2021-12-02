@@ -1,11 +1,16 @@
 package sierikov.adventofcode
 
+import scala.language.existentials
+
 object Runner extends App {
   val year = args.headOption.map(_.toInt).getOrElse(2020)
   val day = args.lift(1).map(_.toInt).getOrElse(0)
 
   val problemsM: Map[Int, Map[Int, Problem[_, _]]] =
     Map(
+      2015 -> Map(
+        1 -> y2015.Day01,
+      ),
       2020 -> Map(
         1 -> y2020.Day01,
         2 -> y2020.Day02,
