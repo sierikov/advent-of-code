@@ -6,7 +6,6 @@ import sierikov.utils.Files
 
 import scala.annotation.tailrec
 import scala.collection.SortedMap
-import scala.collection.immutable.ListMap
 
 object Day04 extends Problem[List[Board], Int] {
   var numbers: List[Int] = List()
@@ -32,13 +31,9 @@ object Day04 extends Problem[List[Board], Int] {
     if (numbers.nonEmpty) {
       val marked = boards.map(_.mark(numbers.head))
       val winners = marked.filter(_.completed).map(win => WiningRecord(win, numbers.head))
-      if (winners.isEmpty) {
-        winningTable(marked, numbers.tail, round, map)
-      } else {
-        winningTable(marked.filterNot(_.completed), numbers.tail, round + 1, map + (round -> winners.head))
-      }
-    }
-    else map
+      if (winners.isEmpty) winningTable(marked, numbers.tail, round, map)
+      else winningTable(marked.filterNot(_.completed), numbers.tail, round + 1, map + (round -> winners.head))
+    } else map
 
   def findCompletedBoard(boards: List[Board], numbers: List[Int], index: Int): Int = {
     val map = winningTable(boards, numbers)
