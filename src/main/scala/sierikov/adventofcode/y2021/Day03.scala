@@ -2,27 +2,19 @@ package sierikov.adventofcode.y2021
 
 import sierikov.adventofcode.Problem
 import sierikov.utils.Files
+import sierikov.utils.Transform.rotate
 import sierikov.utils.StringExtensions._
 
 import scala.annotation.tailrec
 import scala.collection.MapView
-import scala.util.matching.Regex
+
 
 object Day03 extends Problem[List[List[Int]], Int] {
-
-  val pattern: Regex = """(down|up|forward) (\d)""".r
 
   override def parse(res: String): List[List[Int]] =
     Files
       .read(res)
       .map(row => row.toList.map(_.asDigit))
-
-  def rotate(matrix: List[List[Int]]): List[List[Int]] =
-    matrix.head.indices.toList map { column =>
-      matrix.indices.toList map { row =>
-        matrix(row)(column)
-      }
-    }
 
   def getNumbersOccurrences(list: List[Int]) : MapView[Int, Int] = {
     list.groupBy(identity)

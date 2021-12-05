@@ -1,15 +1,11 @@
 package sierikov.adventofcode.y2021
 
 import sierikov.adventofcode.Problem
+import sierikov.adventofcode.y2021.submarine.{Command, Down, Forward, Up}
 import sierikov.utils.Files
 
 import scala.annotation.tailrec
 import scala.util.matching.Regex
-
-sealed trait Command
-case class Up(value: Int) extends Command
-case class Forward(value: Int) extends Command
-case class Down(value: Int) extends Command
 
 object Day02 extends Problem[List[Command], Int] {
 
