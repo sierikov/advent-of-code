@@ -23,6 +23,7 @@ object Runner extends App {
         4 -> y2021.Day04,
         5 -> y2021.Day05,
         6 -> y2021.Day06,
+        7 -> y2021.Day07,
       )
     )
 
