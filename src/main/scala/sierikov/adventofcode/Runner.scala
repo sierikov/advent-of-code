@@ -2,10 +2,8 @@ package sierikov.adventofcode
 
 import scala.language.existentials
 
-object Runner extends App {
-  private val year = args.headOption.map(_.toInt).getOrElse(2020)
-  private val day = args.lift(1).map(_.toInt).getOrElse(0)
 
+object Runner {
   private val problemsM: Map[Int, Map[Int, Problem[_, _]]] =
     Map(
       2015 -> Map(
@@ -27,11 +25,14 @@ object Runner extends App {
       ),
       2022 -> Map(
         1 -> y2022.Day01,
-        2 -> y2022.Day02
+        2 -> y2022.Day02,
+        3 -> y2022.Day03
       )
     )
 
-  run(problemsM, year, day)
+  @main def cli(year: Int, day: Int, other: String*): Unit = {
+    run(problemsM, year, day)
+  }
 
   def resource(year: Int, day: Int): String = s"$year/day-${"%02d" format day}.txt"
 
