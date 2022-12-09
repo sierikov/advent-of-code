@@ -41,4 +41,3 @@ class Day02Test extends AnyFunSuite {
   }
 
 }
-

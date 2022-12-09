@@ -4,7 +4,6 @@ import sierikov.adventofcode.Problem
 import sierikov.utils.Files
 
 import scala.annotation.tailrec
-import scala.util.Try
 
 object Day01 extends Problem[List[Int], Int] {
 

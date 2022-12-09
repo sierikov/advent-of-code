@@ -47,13 +47,13 @@ object Day03 extends Problem[List[List[Int]], Int] {
   override def first(input: List[List[Int]]): Int = {
     val gamma = rotate(input).map(seq => findMostCommonNumberIn(seq).getOrElse(0)).mkString
     val epsilon = inverse(gamma)
-    gamma.b * epsilon.b
+    gamma.binaryToInt * epsilon.binaryToInt
   }
 
   override def second(input: List[List[Int]]): Int = {
     val oxygen = helper(input, findMostCommonNumberIn, 1)
     val scrubber = helper(input, findLeastCommonNumberIn,  0)
-    oxygen.b * scrubber.b
+    oxygen.binaryToInt * scrubber.binaryToInt
   }
 
   @tailrec

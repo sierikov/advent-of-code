@@ -3,10 +3,10 @@ package sierikov.adventofcode
 import scala.language.existentials
 
 object Runner extends App {
-  val year = args.headOption.map(_.toInt).getOrElse(2020)
-  val day = args.lift(1).map(_.toInt).getOrElse(0)
+  private val year = args.headOption.map(_.toInt).getOrElse(2020)
+  private val day = args.lift(1).map(_.toInt).getOrElse(0)
 
-  val problemsM: Map[Int, Map[Int, Problem[_, _]]] =
+  private val problemsM: Map[Int, Map[Int, Problem[_, _]]] =
     Map(
       2015 -> Map(
         1 -> y2015.Day01,
@@ -26,7 +26,8 @@ object Runner extends App {
         7 -> y2021.Day07,
       ),
       2022 -> Map(
-        1 -> y2022.Day01
+        1 -> y2022.Day01,
+        2 -> y2022.Day02
       )
     )
 
@@ -34,7 +35,7 @@ object Runner extends App {
 
   def resource(year: Int, day: Int): String = s"$year/day-${"%02d" format day}.txt"
 
-  def run(problems: Map[Int, Map[Int, Problem[_, _]]], year: Int, day: Int): Unit = {
+  private def run(problems: Map[Int, Map[Int, Problem[_, _]]], year: Int, day: Int): Unit = {
     problems get year match {
       case None => println(s"Problems for $year year are not solved!")
       case Some(y) => y get day match {
@@ -50,7 +51,7 @@ object Runner extends App {
     }
   }
 
-  def solve(problem: Problem[_, _], year: Int, day: Int): Unit = {
+  private def solve(problem: Problem[_, _], year: Int, day: Int): Unit = {
     println(s"Solving puzzle for Day $day (Year $year)")
     val res = resource(year, day)
     val (res1, res2) = problem.solve(res)
