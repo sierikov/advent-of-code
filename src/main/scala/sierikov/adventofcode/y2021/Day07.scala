@@ -6,14 +6,13 @@ import sierikov.utils.Files
 import scala.annotation.tailrec
 
 object Day07 extends Problem[List[Int], Int] {
-  override def parse(res: String): List[Int] = {
+  override def parse(res: String): List[Int] =
     Files
       .read(res)
       .head
       .split(",")
       .map(_.toInt)
       .toList
-  }
 
   def range(input: List[Int]): Range.Inclusive = input.min to input.max
 

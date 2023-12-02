@@ -15,12 +15,11 @@ object Day03 extends Problem[List[List[Int]], Int] {
       .read(res)
       .map(row => row.toList.map(_.asDigit))
 
-  def getNumbersOccurrences(list: List[Int]): MapView[Int, Int] = {
+  def getNumbersOccurrences(list: List[Int]): MapView[Int, Int] =
     list
       .groupBy(identity)
       .view
       .mapValues(_.size)
-  }
 
   def findMostCommonNumberIn(list: List[Int]): Option[Int] = {
     val map = getNumbersOccurrences(list)

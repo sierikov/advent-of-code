@@ -22,12 +22,11 @@ object Day01 extends Problem[List[Int], Int] {
       }
     }.product
 
-  override def second(input: List[Int]): Int = {
+  override def second(input: List[Int]): Int =
     (for {
       a <- input
       b <- input
       c <- input if a + b + c == 2020
     } yield a * c * b).head
 
-  }
 }

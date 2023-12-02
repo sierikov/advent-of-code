@@ -29,14 +29,14 @@ object Day02 extends Problem[List[String], Int] {
     password(rule.min - 1) == rule.ch ^ password(rule.max - 1) == rule.ch
 
   override def first(input: List[String]): Int =
-    input.count(x => {
+    input.count { x =>
       val (rule, pass) = convert(x)
       check(rule, pass)
-    })
+    }
 
   override def second(input: List[String]): Int =
-    input.count(x => {
+    input.count { x =>
       val (rule, pass) = convert(x)
       check2(rule, pass)
-    })
+    }
 }

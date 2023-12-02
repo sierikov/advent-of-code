@@ -18,10 +18,8 @@ object Day03 extends Problem[List[String], Long] {
     if (newPos.y >= grid.size) acc
     else
       count(
-        {
-          if (isTree(newPos, grid)) acc + 1
-          else acc
-        },
+        if (isTree(newPos, grid)) acc + 1
+        else acc,
         newPos,
         slope,
         grid
@@ -40,9 +38,8 @@ object Day03 extends Problem[List[String], Long] {
   override def first(input: List[String]): Long =
     count(Slope(3, 1), input)
 
-  override def second(input: List[String]): Long = {
+  override def second(input: List[String]): Long =
     List(Slope(1, 1), Slope(3, 1), Slope(5, 1), Slope(7, 1), Slope(1, 2))
       .map(count(_, input))
       .product
-  }
 }

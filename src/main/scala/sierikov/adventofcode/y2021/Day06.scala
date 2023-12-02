@@ -6,7 +6,7 @@ import sierikov.utils.Files
 import scala.annotation.tailrec
 
 object Day06 extends Problem[Map[Int, Long], Long] {
-  override def parse(res: String): Map[Int, Long] = {
+  override def parse(res: String): Map[Int, Long] =
     Files
       .read(res)
       .head
@@ -17,7 +17,6 @@ object Day06 extends Problem[Map[Int, Long], Long] {
       .mapValues(_.length)
       .mapValues(_.toLong)
       .toMap
-  }
 
   override def first(input: Map[Int, Long]): Long = generation(input, 80)
 
@@ -39,8 +38,7 @@ object Day06 extends Problem[Map[Int, Long], Long] {
     }
 
   @tailrec
-  def generation(fishies: Map[Int, Long], until: Int, day: Int = 1): Long = {
+  def generation(fishies: Map[Int, Long], until: Int, day: Int = 1): Long =
     if (day > until) fishies.values.sum
     else generation(generate(fishies), until, day + 1)
-  }
 }

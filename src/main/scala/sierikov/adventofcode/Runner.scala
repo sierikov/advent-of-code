@@ -32,13 +32,12 @@ object Runner {
       )
     )
 
-  @main def cli(year: Int, day: Int, other: String*): Unit = {
+  @main def cli(year: Int, day: Int, other: String*): Unit =
     run(problemsM, year, day)
-  }
 
   def resource(year: Int, day: Int): String = s"$year/day-${"%02d".format(day)}.txt"
 
-  private def run(problems: Map[Int, Map[Int, Problem[_, _]]], year: Int, day: Int): Unit = {
+  private def run(problems: Map[Int, Map[Int, Problem[_, _]]], year: Int, day: Int): Unit =
     problems.get(year) match {
       case None => println(s"Problems for $year year are not solved!")
       case Some(y) =>
@@ -52,7 +51,6 @@ object Runner {
               } yield solve(problem, year, day)
         }
     }
-  }
 
   private def solve(problem: Problem[_, _], year: Int, day: Int): Unit = {
     println(s"Solving puzzle for Day $day (Year $year)")
