@@ -1,13 +1,13 @@
-lazy val root = (project in file("."))
-  .settings(name := "Advent of Code")
-  .settings(moduleName := "advent-of-code")
-  .settings(version := "0.1")
-  .settings(scalaVersion := "3.1.0")
+lazy val root = project
+  .in(file("."))
+  .settings(
+    name := "Advent of Code",
+    moduleName := "advent-of-code",
+    description := "Collection of solutions to codewars problems",
+    version := "2023.1.1",
+    scalaVersion := "3.3.0",
+    scalacOptions ++= Seq("-deprecation", "-feature"),
+    libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.15" % Test
+  )
 
-
-resolvers += "Artima Maven Repository" at "https://repo.artima.com/releases"
-
-
-libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.14"
-
-scalacOptions ++= Seq("-deprecation", "-feature")
+addCommandAlias("check", ";scalafmtCheck;Test / scalafmtCheck")
