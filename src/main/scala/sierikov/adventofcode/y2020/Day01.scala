@@ -7,7 +7,7 @@ import scala.util.Try
 
 object Day01 extends Problem[List[Int], Int] {
   val target = 2020
-  val size = 2
+  val size   = 2
 
   override def parse(res: String): List[Int] =
     Files
@@ -17,8 +17,8 @@ object Day01 extends Problem[List[Int], Int] {
 
   override def first(input: List[Int]): Int =
     input.flatMap { a =>
-      input.filter {
-        b => a + b == 2020
+      input.filter { b =>
+        a + b == 2020
       }
     }.product
 

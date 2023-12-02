@@ -12,9 +12,9 @@ object Day02 extends Problem[List[Command], Int] {
   val pattern: Regex = """(down|up|forward) (\d)""".r
 
   def toCommand(row: String): Command = row match {
-    case pattern("up", value) => Up(Integer.parseInt(value))
+    case pattern("up", value)      => Up(Integer.parseInt(value))
     case pattern("forward", value) => Forward(Integer.parseInt(value))
-    case pattern("down", value) => Down(Integer.parseInt(value))
+    case pattern("down", value)    => Down(Integer.parseInt(value))
   }
 
   override def parse(res: String): List[Command] =
@@ -33,8 +33,8 @@ object Day02 extends Problem[List[Command], Int] {
     list match {
       case command :: rest =>
         command match {
-          case Up(value) => helper(rest, depth - value, horizontal)
-          case Down(value) => helper(rest, depth + value, horizontal)
+          case Up(value)      => helper(rest, depth - value, horizontal)
+          case Down(value)    => helper(rest, depth + value, horizontal)
           case Forward(value) => helper(rest, depth, horizontal + value)
         }
       case Nil => depth * horizontal
@@ -45,8 +45,8 @@ object Day02 extends Problem[List[Command], Int] {
     list match {
       case command :: rest =>
         command match {
-          case Up(value) => helper2(rest, aim - value, depth, horizontal)
-          case Down(value) => helper2(rest, aim + value, depth, horizontal)
+          case Up(value)      => helper2(rest, aim - value, depth, horizontal)
+          case Down(value)    => helper2(rest, aim + value, depth, horizontal)
           case Forward(value) => helper2(rest, aim, depth + aim * value, horizontal + value)
         }
       case Nil => depth * horizontal

@@ -6,7 +6,7 @@ object StringExtensions {
     private def base(b: Int): Int = Integer.parseInt(digits, b)
 
     def binaryToInt: Int = base(2)
-    def octalToInt: Int = base(8)
-    def hexToInt: Int = base(16)
+    def octalToInt: Int  = base(8)
+    def hexToInt: Int    = base(16)
   }
 }

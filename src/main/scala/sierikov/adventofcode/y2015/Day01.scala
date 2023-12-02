@@ -10,7 +10,8 @@ object Day01 extends Problem[List[Char], Int] {
   override def parse(res: String): List[Char] =
     Files
       .read(res)
-      .map(row => row.toList).head // there is only one row in the file
+      .map(row => row.toList)
+      .head // there is only one row in the file
 
   def convert(list: List[Char]): List[Int] = list.map {
     case '(' => 1
@@ -26,8 +27,8 @@ object Day01 extends Problem[List[Char], Int] {
   @tailrec
   def helper(list: List[Int], floor: Int = 0, index: Int = 0): Int =
     list match {
-      case Nil => index
-      case value::tail => if (floor == -1) index else helper(tail, floor + value, index + 1)
+      case Nil           => index
+      case value :: tail => if (floor == -1) index else helper(tail, floor + value, index + 1)
     }
 
 }

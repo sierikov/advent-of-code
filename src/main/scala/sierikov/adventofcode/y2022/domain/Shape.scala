@@ -16,17 +16,17 @@ object Shape {
   }
 }
 case object Rock extends Shape {
-  override val value = 1
+  override val value        = 1
   override def winns: Shape = Scissors
   override def loses: Shape = Paper
 }
 case object Paper extends Shape {
-  override val value = 2
+  override val value        = 2
   override def winns: Shape = Rock
   override def loses: Shape = Scissors
 }
 case object Scissors extends Shape {
-  override val value = 3
+  override val value        = 3
   override def winns: Shape = Paper
   override def loses: Shape = Rock
 }

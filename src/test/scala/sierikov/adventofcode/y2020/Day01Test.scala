@@ -27,12 +27,7 @@ class Day01Test extends AnyFunSuite {
 
     object Default {
       val input: List[Int] = List(
-        1721,
-        979,
-        366,
-        299,
-        675,
-        1456,
+        1721, 979, 366, 299, 675, 1456
       )
 
       val result1: Int = 514579
@@ -44,4 +39,3 @@ class Day01Test extends AnyFunSuite {
   }
 
 }
-

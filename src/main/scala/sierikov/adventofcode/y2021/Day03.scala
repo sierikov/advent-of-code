@@ -8,7 +8,6 @@ import sierikov.utils.StringExtensions._
 import scala.annotation.tailrec
 import scala.collection.MapView
 
-
 object Day03 extends Problem[List[List[Int]], Int] {
 
   override def parse(res: String): List[List[Int]] =
@@ -16,8 +15,9 @@ object Day03 extends Problem[List[List[Int]], Int] {
       .read(res)
       .map(row => row.toList.map(_.asDigit))
 
-  def getNumbersOccurrences(list: List[Int]) : MapView[Int, Int] = {
-    list.groupBy(identity)
+  def getNumbersOccurrences(list: List[Int]): MapView[Int, Int] = {
+    list
+      .groupBy(identity)
       .view
       .mapValues(_.size)
   }
@@ -45,14 +45,14 @@ object Day03 extends Problem[List[List[Int]], Int] {
     }
 
   override def first(input: List[List[Int]]): Int = {
-    val gamma = rotate(input).map(seq => findMostCommonNumberIn(seq).getOrElse(0)).mkString
+    val gamma   = rotate(input).map(seq => findMostCommonNumberIn(seq).getOrElse(0)).mkString
     val epsilon = inverse(gamma)
     gamma.binaryToInt * epsilon.binaryToInt
   }
 
   override def second(input: List[List[Int]]): Int = {
-    val oxygen = helper(input, findMostCommonNumberIn, 1)
-    val scrubber = helper(input, findLeastCommonNumberIn,  0)
+    val oxygen   = helper(input, findMostCommonNumberIn, 1)
+    val scrubber = helper(input, findLeastCommonNumberIn, 0)
     oxygen.binaryToInt * scrubber.binaryToInt
   }
 
@@ -62,7 +62,7 @@ object Day03 extends Problem[List[List[Int]], Int] {
     if (index < original.head.size - 1 && original.size > 1) {
       helper(original.filter(row => row(index) == mostCommon), f, solver, index + 1)
     } else {
-      val result = if(original.size == 1) original else original.filter(row => row(index) == mostCommon)
+      val result = if (original.size == 1) original else original.filter(row => row(index) == mostCommon)
       result.head.mkString
     }
 

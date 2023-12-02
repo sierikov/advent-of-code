@@ -9,7 +9,7 @@ object Day02 extends Problem[List[String], Int] {
   case class Rule(min: Int, max: Int, ch: Char)
   type Password = String
 
-  val extract: Regex ="""(\d+)-(\d+) ([a-z]): (\w+)""".r
+  val extract: Regex = """(\d+)-(\d+) ([a-z]): (\w+)""".r
 
   override def parse(res: String): List[String] =
     Files.read(res)

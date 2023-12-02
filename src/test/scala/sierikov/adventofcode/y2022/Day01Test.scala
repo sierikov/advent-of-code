@@ -27,20 +27,7 @@ class Day01Test extends AnyFunSuite {
 
     object Default {
       val input: List[Int] = List(
-        1000,
-        2000,
-        3000,
-        0,
-        4000,
-        0,
-        5000,
-        6000,
-        0,
-        7000,
-        8000,
-        9000,
-        0,
-        10000
+        1000, 2000, 3000, 0, 4000, 0, 5000, 6000, 0, 7000, 8000, 9000, 0, 10000
       )
 
       val result1: Int = 24000

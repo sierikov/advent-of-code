@@ -12,22 +12,24 @@ object Day05 extends Problem[Vector[Vent], Int] {
   val pattern: Regex = """(\d+),(\d+) -> (\d+),(\d+)""".r
 
   override def parse(res: String): Vector[Vent] =
-    Files.read(res).map {
-      case pattern(x0, y0, x1, y1) => Vent(Point(x0.toInt, y0.toInt), Point(x1.toInt, y1.toInt))
-    }.toVector
+    Files
+      .read(res)
+      .map { case pattern(x0, y0, x1, y1) =>
+        Vent(Point(x0.toInt, y0.toInt), Point(x1.toInt, y1.toInt))
+      }
+      .toVector
 
   def overlaps(vents: Vector[Vent]): Int = vents
-      .flatMap(_.points)
-      .groupBy(identity)
-      .view
-      .mapValues(_.size)
-      .count(_._2 > 1)
+    .flatMap(_.points)
+    .groupBy(identity)
+    .view
+    .mapValues(_.size)
+    .count(_._2 > 1)
 
   override def first(input: Vector[Vent]): Int =
     overlaps(input.filterNot(_.isDiagonal))
 
   override def second(input: Vector[Vent]): Int =
     overlaps(input)
-
 
 }

@@ -3,6 +3,7 @@ package sierikov.utils
 import scala.io.Source
 
 object Files {
+
   /**
    * Read a file with input data
    *

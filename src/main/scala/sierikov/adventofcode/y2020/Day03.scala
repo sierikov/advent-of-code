@@ -5,7 +5,7 @@ import sierikov.utils.Files
 
 import scala.annotation.tailrec
 
-object Day03 extends Problem[List[String], Long]{
+object Day03 extends Problem[List[String], Long] {
   val tree = '#'
 
   case class Position(y: Int, x: Int)
@@ -16,10 +16,16 @@ object Day03 extends Problem[List[String], Long]{
     val newPos = Position(pos.y + slope.down, (pos.x + slope.right) % grid.head.length)
 
     if (newPos.y >= grid.size) acc
-    else count({
-      if (isTree(newPos, grid)) acc + 1
-      else acc
-    }, newPos, slope, grid)
+    else
+      count(
+        {
+          if (isTree(newPos, grid)) acc + 1
+          else acc
+        },
+        newPos,
+        slope,
+        grid
+      )
   }
 
   def isTree(pos: Position, grid: List[String]): Boolean =
